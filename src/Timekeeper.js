@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
+import Timeline from './Timeline';
+
+const d3 = Object.assign({}, require('d3-timer'));
 
 class Timekeeper extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      t: null,
+      duration: 5,
+    };
   }
 
+  setTimer() {
+    const durationInMS = this.state.duration * 1000;
+    const t = d3.timer(elapsed => {
+      // console.log(elapsed);
+      this.setState({
+        t: elapsed,
+      });
+      if (elapsed > durationInMS) t.stop();
+    }, 1000);
+  }
+
+  componentDidMount() {
+    this.setTimer();
+  }
+
+  componentDidUpdate() {}
+
   render(props) {
-    return (
-      <div>
-        <h1>Timekeeper</h1>
-        <p>{this.props.text}</p>
-      </div>
-    );
+    return <Timeline totalTime={this.state.duration} t={this.state.t} />;
   }
 }
 
