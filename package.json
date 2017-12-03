@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "d3-axis": "^1.0.8",
     "d3-jetpack": "^2.0.15",
     "d3-scale": "^1.0.7",
     "d3-selection": "^1.2.0",

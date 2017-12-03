@@ -15,12 +15,17 @@ class Timekeeper extends Component {
 
   setTimer() {
     const durationInMS = this.state.duration * 1000;
-    const t = d3.timer(elapsed => {
-      // console.log(elapsed);
-      this.setState({
-        t: elapsed,
-      });
-      if (elapsed > durationInMS) t.stop();
+    // const t = d3.timer(elapsed => {
+    //   // console.log(elapsed);
+    //   this.setState({
+    //     t: elapsed,
+    //   });
+    //   if (elapsed > durationInMS) t.stop();
+    // }, 1000);
+
+    const t = d3.interval(elapsed => {
+      const rnd = Math.random() * (5 - 0) + 0;
+      this.setState({ t: rnd * 1000 });
     }, 1000);
   }
 
