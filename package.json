@@ -11,6 +11,7 @@
     "d3-timer": "^1.0.7",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-player": "^0.25.3",
     "react-scripts": "1.0.17"
   },
   "scripts": {

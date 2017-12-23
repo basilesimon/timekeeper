@@ -24,7 +24,7 @@ class Timeline extends Component {
   }
 
   progressBar(t, total) {
-    const computedWidth = t / (total * 1000) * 100 + '%';
+    const computedWidth = t * 1000 / (total * 1000) * 100 + '%';
     return d3
       .select('#progress')
       .transition()
@@ -39,13 +39,13 @@ class Timeline extends Component {
     const x = d3
       .scaleLinear()
       .range([0, 300])
-      .domain([0, 5]);
+      .domain([0, 810]);
     return d3
       .select('#timeline')
       .append('g')
       .at({ id: 'bottomAxis' })
       .translate([0, 70])
-      .call(d3.axisBottom(x).ticks(5));
+      .call(d3.axisBottom(x));
   }
 
   componentDidMount() {
@@ -54,7 +54,6 @@ class Timeline extends Component {
   }
 
   componentDidUpdate() {
-    console.log(this.props.t);
     this.progressBar(this.props.t, this.props.totalTime);
   }
 

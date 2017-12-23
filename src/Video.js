@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
+import ReactPlayer from 'react-player';
+import './Video.css';
 import videoFile from './video.mp4';
 
 class Video extends Component {
   render(props) {
-    const { currentTime } = this.props;
+    const config = {
+      autoplay: true,
+      width: 400,
+      controls: true,
+      style: {
+        margin: '0 auto',
+      },
+    };
 
     return (
       <div>
-        <video
-          src={videoFile}
-          autoPlay
-          controls
-          width="350"
-          currenttime={currentTime}
+        <ReactPlayer
+          url={videoFile}
+          width={config.width}
+          style={config.style}
+          controls={config.controls}
+          onProgress={this.props.onVideoProgress}
+          onDuration={this.props.onVideoDurationCalculated}
+          playing
         />
       </div>
     );
