@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import './Video.css';
 import videoFile from './video.mp4';
 
 class Video extends Component {
   render(props) {
     const config = {
       autoplay: true,
-      width: 400,
       controls: true,
       style: {
         margin: '0 auto',
       },
+      width: 400,
     };
 
+    /*
+     * onProgress and onDuration come from <Timekeeper />
+     * they shall set state up there
+     */
     return (
       <div>
         <ReactPlayer

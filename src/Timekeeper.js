@@ -8,44 +8,32 @@ class Timekeeper extends Component {
   constructor(props) {
     super(props);
 
+    /*
+     * videoDuration is set by onDurationVideoCalculated
+     * videoPlayingAt is set by onVideoProgress
+     */
     this.state = {
       videoDuration: null,
       videoPlayingAt: 0,
     };
   }
 
-  setTimer() {
-    // const durationInMS = this.state.duration * 1000;
-    // const t = d3.timer(elapsed => {
-    //   // console.log(elapsed);
-    //   this.setState({
-    //     t: elapsed,
-    //   });
-    //   if (elapsed > durationInMS) t.stop();
-    // }, 1000);
-    // At regular intervals of 1000ms,
-    // callback sets a new `t` value to state
-    // eslint-disable-next-line
-    // const t = d3.interval(elapsed => {
-    //   const rnd = Math.random() * (5 - 0) + 0;
-    //   this.setState({ t: rnd * 1000 });
-    // }, 2000);
-  }
-
+  // This fires whenever <VideoPlayer /> has calculated that
   onVideoDurationCalculated = duration => {
     this.setState({
       videoDuration: duration,
     });
   };
+
+  /* This fires every 1000ms from <VideoPlayer />
+   * We can tweak this 1000ms variable
+   * It sets an object to state, which contains the `playedSeconds` key
+   */
   onVideoProgress = state => {
     this.setState({
       videoPlayingAt: state,
     });
   };
-
-  componentDidMount() {
-    this.setTimer();
-  }
 
   render(props) {
     return (

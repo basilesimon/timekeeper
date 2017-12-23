@@ -23,6 +23,12 @@ class Timeline extends Component {
       .translate([0, 20]);
   }
 
+  /*
+   * Draws the progress bar based on where we're at in the video
+   * @TODO: wire click event that will:
+   * - calculate where the click is compared to axis domain
+   * - update where we should be playing the video accordingly
+   */
   progressBar(t, total) {
     const computedWidth = t * 1000 / (total * 1000) * 100 + '%';
     return d3
@@ -35,6 +41,7 @@ class Timeline extends Component {
       });
   }
 
+  // Still mostly useless at this point since hardcoded
   makeAxis(total) {
     const x = d3
       .scaleLinear()
