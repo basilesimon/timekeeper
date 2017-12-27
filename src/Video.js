@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import videoFile from './video.mp4';
+import videoFile from './rickroll.mp4';
 
 class Video extends Component {
   render(props) {

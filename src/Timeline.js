@@ -18,6 +18,10 @@ class Timeline extends Component {
         height: 100,
       })
       .st({ backgroundColor: '#f8f7f1', padding: '20px', overflow: 'visible' })
+      .on('click', function() {
+        console.log(this);
+        const clickCoordinates = d3.mouse(this);
+      })
       .append('rect')
       .at({ id: 'progress' })
       .translate([0, 20]);
@@ -46,7 +50,7 @@ class Timeline extends Component {
     const x = d3
       .scaleLinear()
       .range([0, 300])
-      .domain([0, 810]);
+      .domain([0, 210]);
     return d3
       .select('#timeline')
       .append('g')
